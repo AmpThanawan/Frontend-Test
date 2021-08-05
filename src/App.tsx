@@ -1,26 +1,17 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from "./styles/global"
+import NavbarHeader from "./components/Navbar"
+import ContentBody from "./components/ContentBody"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App:React.FC = ()=> (
+  <>
+    <GlobalStyle/>
+    <NavbarHeader/> 
+    <ContentBody/>
+   
+  </>
+)
 
 export default App;
