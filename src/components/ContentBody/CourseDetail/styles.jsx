@@ -40,7 +40,7 @@ color: #8e8e8e;
 export const TabContentBox = styled.div`
 color: black;
 margin-top: 20px;
-font-size: 4em ;
+font-size: 1em ;
 
 `
 

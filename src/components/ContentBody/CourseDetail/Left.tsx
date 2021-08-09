@@ -1,4 +1,6 @@
 import React from 'react'
+import { useMediaQuery } from 'react-responsive';
+import TeacherTabMobile from './TeacherTabMobile';
 import {
   LeftBlock,
   NavTab,
@@ -6,11 +8,12 @@ import {
   NavTabLink,
   TabContentBox
 } from "./styles"
-import { TabContent, TabPane, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { TabContent, TabPane,  Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
 const Left:React.FC = (props) => {
   const [activeTab, setActiveTab] = React.useState('1');
+  const isMobile = useMediaQuery({ query: `(max-width: 992px)` });
 
     return (
     
@@ -25,6 +28,7 @@ const Left:React.FC = (props) => {
             รายละเอียด
           </NavTabLink>
         </NavTabItem>
+        {!isMobile  &&
         <NavTabItem>
           <NavTabLink
             className={classnames({ active: activeTab === '2' })}
@@ -34,19 +38,34 @@ const Left:React.FC = (props) => {
             วิธีการชำระเงิน
           </NavTabLink>
         </NavTabItem>
+      }
+
+        {isMobile  &&
         <NavTabItem>
           <NavTabLink
             className={classnames({ active: activeTab === '3' })}
             onClick={() => activeTab !== '3' ? setActiveTab('3') : null}
             activeClassName="linkActive"
           >
-          ห้องสนทนา
+          ผู้สอน
           </NavTabLink>
         </NavTabItem>
+          }
+       {!isMobile  &&
         <NavTabItem>
           <NavTabLink
             className={classnames({ active: activeTab === '4' })}
             onClick={() => activeTab !== '4' ? setActiveTab('4') : null}
+            activeClassName="linkActive"
+          >
+          ห้องสนทนา
+          </NavTabLink>
+        </NavTabItem>
+}
+        <NavTabItem>
+          <NavTabLink
+            className={classnames({ active: activeTab === '5' })}
+            onClick={() => activeTab !== '5' ? setActiveTab('5') : null}
             activeClassName="linkActive"
           >
           รีวิว
@@ -69,13 +88,20 @@ const Left:React.FC = (props) => {
           </Row>
         </TabPane>
         <TabPane tabId="3">
+        <Row>
+            <Col sm="12">
+            <TabContentBox><TeacherTabMobile/> </TabContentBox>
+            </Col>
+          </Row>
+        </TabPane>
+        <TabPane tabId="4">
           <Row>
             <Col sm="12">
               <TabContentBox>Tab 3 Contents</TabContentBox>
             </Col>
           </Row>
         </TabPane>
-        <TabPane tabId="4">
+        <TabPane tabId="5">
           <Row>
             <Col sm="12">
               <TabContentBox>Tab 4 Contents</TabContentBox>
